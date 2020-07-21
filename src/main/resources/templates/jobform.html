@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Form</title>
+</head>
+<body>
+<form th:action="@{/process}" method="post" th:object="${job}">
+    <input type="hidden" th:field="*{id}" />
+    Title: <input type="text" th:field="*{title}"/>
+    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+    <br/>
+    Employer: <input type="text" th:field="*{employer}"/>
+    <span th:if="${#fields.hasErrors('employer')}" th:errors="*{employer}"></span>
+    <br/>
+    Description: <input type="text" th:field="*{description}" />
+    <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+    <br/>
+
+    No Years: <input type="number" th:field="*{years}" />
+    <span th:if="${#fields.hasErrors('years')}" th:errors="*{years}"></span>
+    <br/>
+
+    <div class="radio">Active
+        <label>
+            <input type="radio" th:field="*{active}" value="true">Yes
+        </label>
+        <label>
+            <input type="radio" th:field="*{active}" value="false">No
+        </label>
+    </div>
+    <br/>
+
+    <input type="submit" value="Create">
+</form>
+
+</body>
+</html>
